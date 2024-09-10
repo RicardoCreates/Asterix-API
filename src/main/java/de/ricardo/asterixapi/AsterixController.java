@@ -26,7 +26,13 @@ public class AsterixController {
         return characterRepository.save(character);
     }
 
-    
+    @PutMapping("/{id}")
+    public Character updateCharacter(@PathVariable String id, @RequestBody Character updatedCharacter){
+        return  characterRepository.save(updatedCharacter);
+    }
 
-
+    @DeleteMapping("/{id}")
+    public void deleteCharacter(@PathVariable String id) {
+        characterRepository.deleteById(id);
+    }
 }
