@@ -8,31 +8,31 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/asterix/characters")
+@RequiredArgsConstructor
 public class AsterixController {
 
-    private final CharacterRepository characterRepository;
 
-    public AsterixController(CharacterRepository characterRepository) {
-        this.characterRepository = characterRepository;
-    }
+    private final CharacterService characterService;
+
+
 
     @GetMapping
     public List<Character> getCharacters() {
-        return characterRepository.findAll();
+        return characterService.getCharacters();
     }
 
     @PostMapping
-    public Character addCharacter(@RequestBody Character character) {
-        return characterRepository.save(character);
+    public Character addCharacter(@RequestBody CharacterDTO characterDTO) {
+        return characterService.addCharacter(characterDTO);
     }
 
     @PutMapping("/{id}")
     public Character updateCharacter(@PathVariable String id, @RequestBody Character updatedCharacter){
-        return  characterRepository.save(updatedCharacter);
+        return  characterService.updateCharacter(id, updatedCharacter);
     }
 
     @DeleteMapping("/{id}")
     public void deleteCharacter(@PathVariable String id) {
-        characterRepository.deleteById(id);
+        characterService.deleteCharacter(id);
     }
 }
