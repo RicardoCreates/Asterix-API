@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -16,6 +17,10 @@ public class CharacterService {
 
     public List<Character> getCharacters() {
         return characterRepository.findAll();
+    }
+
+    public Optional<Character> findById(String id) {
+        return characterRepository.findById(id);
     }
 
     public Character addCharacter(CharacterDTO characterDTO) {
