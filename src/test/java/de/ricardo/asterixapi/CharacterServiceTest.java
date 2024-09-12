@@ -43,7 +43,7 @@ class CharacterServiceTest {
     @Test
     void addCharacter() {
         //GIVEN
-        CharacterDTO characterDTO = new CharacterDTO( "Asterix", 30, "Warrior");
+        CharacterDTO characterDTO = new CharacterDTO( "1", "Asterix", 30, "Warrior");
         Character expected = new Character("1", "Asterix", 30, "Warrior");
         //WHEN
         when(characterRepository.save(any(Character.class))).thenReturn(expected);
